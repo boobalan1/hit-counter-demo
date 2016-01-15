@@ -6,8 +6,11 @@ redis = Redis(host=os.environ.get('REDIS_HOST', 'redis'), port=6379)
 
 @app.route('/')
 def hello():
-    redis.incr('hits', 14)
-    return 'Hello World! I have been seen %s times.' % redis.get('hits')
+    redis.incr('visits', 15)
+    html = "<h3>Hello {name}!</h3>" \
+           "<b>Hostname:</b> {hostname}<br/>" \
+           "<b>Visits:</b> {visits}<br/>"
+    return html.format(name=os.getenv('NAME', "world"), hostname=socket.gethostname(), visits=visits)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
