@@ -6,11 +6,11 @@ A basic Python web app to demonstrate linking docker containers
 
 Clone this repository for use with:
 
-    $ git clone https://github.com/coopermaa/hit_counter
+    $ git clone https://github.com/smakam/hit_counter
 
 Build a docker image for python web application:
 
-    $ docker build -t coopermaa/web .
+    $ docker build -t smakam/web .
 
 Run a redis container, the container will export port 6379:
 
@@ -19,7 +19,7 @@ Run a redis container, the container will export port 6379:
 Run python web application and link it with redis container:
 
     $ docker run --name web --link redis:redis \
-      -p 5000:5000 -d coopermaa/web python app.py
+      -p 5000:5000 -d smakam/web python app.py
 
 The web app should now be listening on port 5000 on your docker daemon, we can visit it:
 
